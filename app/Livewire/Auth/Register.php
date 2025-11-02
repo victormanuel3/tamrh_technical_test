@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Auth;
 
+use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -13,26 +14,25 @@ class Register extends Component
     public $email = '';
     public $password = '';
 
-    protected $rules = [
-        'name' => 'required|string|min:4|max:15|unique:users,name',
-        'email' => 'required|email|max:255|unique:users,email',
-        'password' => 'required|string|min:6',
-    ];
+    protected function rules()
+    {
+        return (new RegisterRequest())->rules();
+    }
 
-    protected $messages = [
-        'name.required' => 'Este campo es obligatorio.',
-        'name.min' => 'El nombre debe tener al menos 4 caracteres.',
-        'name.unique' => 'Este nombre de usuario ya está en uso.',
-        'email.required' => 'Este campo es obligatorio.',
-        'email.email' => 'Debe ser un email válido.',
-        'email.unique' => 'Este email ya está registrado.',
-        'password.required' => 'Este campo es obligatoria.',
-        'password.min' => 'La contraseña debe tener al menos 6 caracteres.',
-    ];
+    protected function messages()
+    {
+        return (new RegisterRequest())->messages();
+    }
 
     public function updated($propertyName)
     {
         $this->validateOnly($propertyName);
+    }
+
+        public function resetForm()
+    {
+        $this->reset(['name', 'email', 'password']);
+        $this->resetValidation();
     }
 
     public function register() {

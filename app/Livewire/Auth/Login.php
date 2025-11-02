@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Auth;
 
+use App\Http\Requests\LoginRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -12,17 +13,27 @@ class Login extends Component
     public $user = '';
     public $password = '';
 
-    protected $rules = [
-        'user' => 'required|string',
-        'password' => 'required|string|min:6',
-    ];
+    protected function rules()
+    {
+        return (new LoginRequest())->rules();
+    }
 
-    protected $messages = [
-        'user.required' => 'Este campo es obligatorio.',
-        'password.required' => 'Este campo es obligatoria.',
-        'password.min' => 'La contraseña debe tener al menos 6 caracteres.',
-    ];
+    protected function messages()
+    {
+        return (new LoginRequest())->messages();
+    }
 
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
+    }
+
+    public function resetForm()
+    {
+        $this->reset(['user', 'password']);
+        $this->resetValidation();
+    }
+    
     public function login() {
         $this->validate();
 

@@ -1,10 +1,13 @@
-<div x-data="{showModal: false}" @open-register-modal.window="showModal = true" x-cloak>
+<div x-data="{showModal: false}" 
+    @open-register-modal.window="showModal = true"
+    @close-modal="showModal = false; $wire.resetForm()"  
+    x-cloak>
     <div x-show="showModal">
         <!-- Modal -->
         <div class="modal d-block" tabindex="-1">
-            <div class="modal-dialog modal-dialog-centered" @click.away="showModal = false">
+            <div class="modal-dialog modal-dialog-centered" @click.away="showModal = false; $wire.resetForm()">
                 <div class="modal-content p-4 position-relative" style="width: 27rem; font-size: 16px">
-                    <button type="button" class="btn-close position-absolute top-0 end-0 m-3" @click="showModal = false" aria-label="Close"></button>
+                    <button type="button" class="btn-close position-absolute top-0 end-0 m-3" @click="showModal = false; $wire.resetForm()" aria-label="Close"></button>
                     
                     <h2 class="text-primary mb-4">Registrarse</h2>
                     
@@ -38,10 +41,9 @@
                                 <span class="text-danger small">{{ $message }}</span> 
                             @enderror
                         </div>
-                        
-                        <button type="submit" class="btn text-white w-100" style="background-color: #4338ca;">
-                            <span wire:loading.remove>Registrarse</span>
-                            <span wire:loading>
+                        <button type="submit" class="btn text-white w-100" style="background-color: #4338ca;" wire:loading.attr="disabled" wire:target="register">
+                            <span wire:loading.remove wire:target="register">Iniciar sesión</span>
+                            <span wire:loading wire:target="register">
                                 <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
                                 Cargando...
                             </span>
