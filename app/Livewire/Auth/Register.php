@@ -12,12 +12,11 @@ class Register extends Component
     public $name = '';
     public $email = '';
     public $password = '';
-    public $password_confirmation = '';
 
     protected $rules = [
         'name' => 'required|string|min:4|max:15|unique:users,name',
         'email' => 'required|email|max:255|unique:users,email',
-        'password' => 'required|string|min:6|confirmed',
+        'password' => 'required|string|min:6',
     ];
 
     protected $messages = [
@@ -29,7 +28,6 @@ class Register extends Component
         'email.unique' => 'Este email ya está registrado.',
         'password.required' => 'Este campo es obligatoria.',
         'password.min' => 'La contraseña debe tener al menos 6 caracteres.',
-        'password.confirmed' => 'Las contraseñas no coinciden.',
     ];
 
     public function updated($propertyName)

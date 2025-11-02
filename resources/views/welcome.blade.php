@@ -13,16 +13,47 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body x-data>
-    <h1>HOLA</h1>
-    <div>
-        <button @click="$dispatch('open-login-modal')">
-            Login
-        </button>
-        <button @click="$dispatch('open-register-modal')">
-            Registrarse
-        </button>
+<body x-data class="bg-light">
+    <nav class="navbar navbar-light bg-white shadow-sm">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="{{ asset('/images/tamrh.png') }}" alt="Logo" height="40" class="me-2">
+            </a>
+            <div>
+                <button class="btn text-white me-2" style="background-color: #4338ca;" @click="$dispatch('open-login-modal')">
+                    Iniciar sesión
+                </button>
+                <button class="btn btn-outline-primary" style="border-color: #4338ca; color: #4338ca;" @click="$dispatch('open-register-modal')">
+                    Registrarse
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row min-vh-100 align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold mb-4" style="color: #4338ca;">
+                    Bienvenido a mí prueba técnica
+                </h1>
+                <p class="lead text-muted mb-4">
+                    Soy Víctor Manuel, Desarrollador web
+                </p>
+                <div class="d-flex gap-3">
+                    <button class="btn btn-lg text-white" style="background-color: #4338ca;" @click="$dispatch('open-register-modal')">
+                        Comenzar ahora
+                    </button>
+                    <button class="btn btn-lg btn-outline-secondary" @click="$dispatch('open-login-modal')">
+                        Ya tengo cuenta
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center">
+                <img src="{{ asset('/images/tamrh.png') }}" alt="Logo" class="img-fluid" style="max-width: 600px;">
+            </div>
+        </div>
     </div>
+
     @livewire('auth.login')
     @livewire('auth.register')
 </body>
