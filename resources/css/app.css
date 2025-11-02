@@ -19,3 +19,21 @@ body {
 .text-primary {
     color: #4338ca !important;
 }
+
+aside a:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.sidebar-custom a {
+    transition: all 0.3s ease;
+}
+    
+.sidebar-custom a:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+    
+.sidebar-custom a.active-link {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    font-weight: 600 !important;
+    border-left: 4px solid white;
+}

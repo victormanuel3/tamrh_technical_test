@@ -14,11 +14,16 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
-    @include('components.sidebar')
-    <div>
-        <main>
-            {{ $slot }}
-        </main>
+    <div class="d-flex">
+        <aside>
+            @include('components.sidebar')
+        </aside>
+        
+        <div class="flex-grow-1">
+            <main class="p-4">
+                {{ $slot }}
+            </main>
+        </div>
     </div>
 </body>
 </html>
