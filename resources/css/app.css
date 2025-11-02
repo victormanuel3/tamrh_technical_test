@@ -1,0 +1,21 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+* {
+    box-sizing: border-box;
+    letter-spacing: -0.02em;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter Tight', sans-serif !important;
+}
+
+.text-primary {
+    color: #4338ca !important;
+}
