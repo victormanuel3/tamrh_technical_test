@@ -13,6 +13,8 @@ class Register extends Component
     public $name = '';
     public $email = '';
     public $password = '';
+    public $password_confirmation = '';
+
 
     protected function rules()
     {
@@ -31,7 +33,7 @@ class Register extends Component
 
         public function resetForm()
     {
-        $this->reset(['name', 'email', 'password']);
+        $this->reset(['name', 'email', 'password', 'password_confirmation']);
         $this->resetValidation();
     }
 

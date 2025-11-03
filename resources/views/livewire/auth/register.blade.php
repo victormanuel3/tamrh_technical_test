@@ -41,8 +41,19 @@
                                 <span class="text-danger small">{{ $message }}</span> 
                             @enderror
                         </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">
+                                Confirmar contraseña
+                            </label>
+                            <input type="password" class="form-control" wire:model.blur="password_confirmation" autocomplete="new-password">
+                            @error('password_confirmation') 
+                                <span class="text-danger small">{{ $message }}</span> 
+                            @enderror
+                        </div>
+
                         <button type="submit" class="btn text-white w-100" style="background-color: #4338ca;" wire:loading.attr="disabled" wire:target="register">
-                            <span wire:loading.remove wire:target="register">Iniciar sesión</span>
+                            <span wire:loading.remove wire:target="register">Registrarse</span>
                             <span wire:loading wire:target="register">
                                 <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
                                 Cargando...

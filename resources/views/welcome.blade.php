@@ -54,6 +54,7 @@
         </div>
     </div>
 
+    {{-- Modals --}}
     @livewire('auth.login')
     @livewire('auth.register')
 </body>

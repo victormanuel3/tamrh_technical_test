@@ -19,7 +19,8 @@ class RegisterRequest extends FormRequest
         return [
             'name' => 'required|string|min:4|max:15|unique:users,name',
             'email' => 'required|email|max:255|unique:users,email',
-            'password' => 'required|string|min:6',
+            'password' => 'required|string|min:6|confirmed',
+            'password_confirmation' => 'required|string|min:6',
         ];
     }
 
@@ -35,6 +36,9 @@ class RegisterRequest extends FormRequest
             'email.unique' => 'Este email ya está registrado.',
             'password.required' => 'Este campo es obligatorio.',
             'password.min' => 'La contraseña debe tener al menos 6 caracteres.',
+            'password.confirmed' => 'Las contraseñas no coinciden.',
+            'password_confirmation.required' => 'Debes confirmar la contraseña.',
+            'password_confirmation.min' => 'La confirmación debe tener al menos 6 caracteres.',
         ];
     }
 }
